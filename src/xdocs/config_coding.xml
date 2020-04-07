@@ -978,12 +978,42 @@ String nullString = null;
       </subsection>
 
       <subsection name="Examples" id="EqualsAvoidNull_Examples">
-        <p>
-          To configure the check:
-        </p>
-        <source>
-&lt;module name=&quot;EqualsAvoidNull&quot;/&gt;
-        </source>
+          <p>
+              To configure the check:
+          </p>
+          <source>
+              &lt;module name=&quot;EqualsAvoidNull&quot;/&gt;
+          </source>
+          <p>Example:</p>
+          <source>
+              boolean equalsValue(String someString){
+              return someString.equals("value"); // violation
+              }
+
+              boolean equalsValueIgnoreCase(String someString){
+              return someString.equalsIgnoreCase("value"); // violation
+              }
+          </source>
+          <p>
+              To configure the check to ignore equalsIgnoreCase method:
+          </p>
+          <source>
+              &lt;module name="EqualsAvoidNull">
+              &lt;property name="ignoreEqualsIgnoreCase" value="true"/>
+              &lt;/module>
+          </source>
+          <p>
+              Example when ignoreEqualsIgnoreCase is set to true:
+          </p>
+          <source>
+              boolean equalsValue(String someString){
+              return someString.equals("value"); // violation
+              }
+
+              boolean equalsValueIgnoreCase(String someString){
+              return someString.equalsIgnoreCase("value"); // OK
+              }
+          </source>
       </subsection>
 
       <subsection name="Example of Usage" id="EqualsAvoidNull_Example_of_Usage">

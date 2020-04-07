@@ -68,6 +68,36 @@ import com.puppycrawl.tools.checkstyle.utils.CheckUtil;
  * <pre>
  * &lt;module name=&quot;EqualsAvoidNull&quot;/&gt;
  * </pre>
+ * <p>Example:</p>
+ * <pre>
+ * boolean equalsValue(String someString){
+ *     return someString.equals("value"); // violation
+ * }
+ *
+ * boolean equalsValueIgnoreCase(String someString){
+ *     return someString.equalsIgnoreCase("value"); // violation
+ * }
+ * </pre>
+ * <p>
+ * To configure the check to ignore equalsIgnoreCase method:
+ * </p>
+ * <pre>
+ * &lt;module name=&quot;EqualsAvoidNull&quot;&gt;
+ *  &lt;property name=&quot;ignoreEqualsIgnoreCase&quot; value=&quot;true&quot;/&gt;
+ * &lt;/module&gt;
+ * </pre>
+ * <p>
+ * Example when ignoreEqualsIgnoreCase is set to true:
+ * </p>
+ * <pre>
+ * boolean equalsValue(String someString){
+ *     return someString.equals("value"); // violation
+ * }
+ *
+ * boolean equalsValueIgnoreCase(String someString){
+ *     return someString.equalsIgnoreCase("value"); // OK
+ * }
+ * </pre>
  *
  * @since 5.0
  */
